@@ -3,24 +3,25 @@ package com.example.tim.foodapp.data.local
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.example.tim.foodapp.data.models.FoodList
+import io.reactivex.Completable
 
 @Dao
 interface FoodListDao {
 
     @Query("SELECT * FROM foodlist")
-    fun getAlarms(): LiveData<List<FoodList>>
+    fun getFoodLists(): LiveData<List<FoodList>>
 
     @Query("SELECT * FROM foodlist WHERE id=:id")
-    fun getAlarm(id: Long): LiveData<FoodList>
+    fun getFoodList(id: Long): LiveData<FoodList>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAlarm(alarm: FoodList)
+    fun insertFoodList(foodList: FoodList)
 
     @Update
-    fun updateAlarm(alarm: FoodList)
+    fun updateFoodList(foodList: FoodList)
 
     @Delete
-    fun deleteAlarm(alarm: FoodList)
+    fun deleteFoodList(foodList: FoodList)
 
     @Query("DELETE FROM foodlist")
     fun deleteAll()

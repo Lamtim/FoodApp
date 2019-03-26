@@ -19,6 +19,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     }
 
     fun setList(list: ArrayList<FoodList>) {
+        mList.clear()
         mList.addAll(list)
         notifyDataSetChanged()
     }

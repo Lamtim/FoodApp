@@ -5,7 +5,7 @@ import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import com.example.tim.foodapp.data.models.FoodList
 
-@Database(entities = [FoodList::class], version = 3, exportSchema = false)
+@Database(entities = [FoodList::class], version = 4, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun foodListDao(): FoodListDao
