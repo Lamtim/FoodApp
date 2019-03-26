@@ -1,28 +1,34 @@
 package com.example.tim.foodapp.data.local
 
 import android.arch.persistence.room.TypeConverter
+import com.example.tim.foodapp.data.models.Product
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.util.*
+import java.util.Collections.emptyList
 
 
 class Converters {
 
     companion object {
+
+        var gson = Gson()
+
         @TypeConverter
         @JvmStatic
-        fun fromString(value: String): ArrayList<String> {
-            val listType = object : TypeToken<ArrayList<String>>() {
-
+        fun stringToSomeObjectList(data: String?): List<Product> {
+            if (data == null) {
+                return Collections.emptyList()
+            }
+            val listType = object : TypeToken<List<Product>>() {
             }.type
-            return Gson().fromJson(value, listType)
+            return gson.fromJson(data, listType)
         }
 
         @TypeConverter
         @JvmStatic
-        fun fromArrayList(list: ArrayList<String>): String {
-            val gson = Gson()
-            return gson.toJson(list)
+        fun someObjectListToString(products: List<Product>): String {
+            return gson.toJson(products)
         }
-
     }
 }

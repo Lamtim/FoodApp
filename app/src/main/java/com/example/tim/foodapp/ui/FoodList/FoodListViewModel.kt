@@ -9,8 +9,8 @@ import javax.inject.Inject
 
 class FoodListViewModel @Inject constructor(val foodListRepo: FoodListRepo) : BaseViewModel() {
 
-    private val _lists = MutableLiveData<ArrayList<FoodList>>()
-    val lists: LiveData<ArrayList<FoodList>>
+    private val _lists = MutableLiveData<List<FoodList>>()
+    val lists: LiveData<List<FoodList>>
         get() = _lists
 
     fun addList(foodList: FoodList) {

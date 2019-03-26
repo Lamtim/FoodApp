@@ -11,11 +11,11 @@ import javax.inject.Singleton
 class FoodListRepo @Inject constructor(val foodListLocalSource: FoodListLocalSource) {
 
 
-    fun getLists(): ArrayList<FoodList> {
+    fun getLists(): List<FoodList> {
         return getListsLocal()
     }
 
-    fun getListsLocal(): ArrayList<FoodList> {
+    fun getListsLocal(): List<FoodList> {
         return foodListLocalSource.getLists()
     }
 }

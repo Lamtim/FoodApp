@@ -6,8 +6,8 @@ import java.util.*
 
 @Entity
 data class FoodList(
-        var name: String
-        //var products: ArrayList<Product>?
+        var name: String,
+        var products: List<Product>?
         ) {
 
     @PrimaryKey(autoGenerate = true)
