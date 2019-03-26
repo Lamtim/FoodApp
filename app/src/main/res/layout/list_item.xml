@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/listName"
-            android:text="@{foodList.name}"
+            android:text="@{foodList.safeName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"

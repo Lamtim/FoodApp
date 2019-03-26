@@ -3,13 +3,14 @@ package com.example.tim.foodapp.ui.FoodList
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import com.example.tim.foodapp.data.models.FoodList
+import com.example.tim.foodapp.data.repository.FoodListRepo
 import com.example.tim.foodapp.ui.base.BaseViewModel
 import javax.inject.Inject
 
-class FoodListViewModel @Inject constructor() : BaseViewModel() {
+class FoodListViewModel @Inject constructor(val foodListRepo: FoodListRepo) : BaseViewModel() {
 
-    private val _lists = MutableLiveData<List<FoodList>>()
-    val lists: LiveData<List<FoodList>>
+    private val _lists = MutableLiveData<ArrayList<FoodList>>()
+    val lists: LiveData<ArrayList<FoodList>>
         get() = _lists
 
     fun addList(foodList: FoodList) {
@@ -20,11 +21,8 @@ class FoodListViewModel @Inject constructor() : BaseViewModel() {
         _lists.value = list
     }
 
-    fun getList(){
-        val list1 = FoodList("salut Test",null)
-        val list = ArrayList<FoodList>()
-        list.add(list1)
-        _lists.value = list
+    fun getList() {
+        _lists.value = foodListRepo.getLists()
     }
 
 }
